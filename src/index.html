@@ -4,7 +4,35 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Search images</title>
   </head>
-  <body></body>
+  <body>
+    <form class="search-form" id="search-form">
+      <div class="search-form--wrapper">
+        <input
+          type="text"
+          name="searchQuery"
+          autocomplete="off"
+          placeholder="Search images..."
+        />
+
+        <button type="submit">
+          <svg width="18px" height="18px">
+            <use href="./images/icon.svg#icon-search"></use>
+          </svg>
+        </button>
+      </div>
+    </form>
+
+    <div class="gallery"></div>
+
+    <button type="button" class="load-more">Load more</button>
+
+    <script src="./index.js" type="module"></script>
+  </body>
 </html>

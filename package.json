@@ -19,7 +19,9 @@
   },
   "dependencies": {
     "caniuse-lite": "^1.0.30001443",
-    "modern-normalize": "^1.1.0"
+    "modern-normalize": "^1.1.0",
+    "notiflix": "^3.2.6",
+    "simplelightbox": "^2.12.1"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",
