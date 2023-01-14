@@ -5,6 +5,8 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 
 import Notiflix from 'notiflix';
 
+import { fetchImages } from './fetchImages';
+
 const form = document.querySelector('#search-form');
 const gallery = document.querySelector('.gallery');
 const input = document.querySelector('[name="searchQuery"]');
@@ -22,13 +24,13 @@ let page = 1;
 /* 
 fetching images
  */
-const fetchImage = async (searchedImages, page) => {
-  const response = await fetch(
-    `https://pixabay.com/api/?key=32715422-e0410e3c137bf18af69487d41&q=${searchedImages}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40&page=${page}`
-  );
-  const images = await response.json();
-  return images;
-};
+// const fetchImages = async (searchedImages, page) => {
+//   const response = await fetch(
+//     `https://pixabay.com/api/?key=32715422-e0410e3c137bf18af69487d41&q=${searchedImages}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40&page=${page}`
+//   );
+//   const images = await response.json();
+//   return images;
+// };
 
 /* 
 search button
@@ -38,7 +40,8 @@ function onSubmit(evt) {
   if (!input.value) {
     return;
   }
-  fetchImage(onInput()).then(images => {
+  page = 1;
+  fetchImages(onInput(), page).then(images => {
     gallery.innerHTML = '';
 
     if (images.totalHits > 40) {
@@ -62,7 +65,7 @@ load more button
  */
 function onLoadMore() {
   page += 1;
-  fetchImage(onInput(), page).then(images => {
+  fetchImages(onInput(), page).then(images => {
     createGalleryMarkup(images.hits);
     if (images.totalHits === gallery.children.length) {
       loadMoreBtn.style.visibility = 'hidden';
